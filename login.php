@@ -1,9 +1,6 @@
 <?php
-if (!empty($_POST["username"]) AND !empty($_POST["password"])) {
-    echo "<h2>Identification reussie</h2>" . "<br>";
-    $user_name = htmlspecialchars($_POST["username"]);
-    $user_password = htmlspecialchars($_POST["password"]);
-}
+include_once("functions.php");
+connexion();
 ?>
 <html>
   <head>
