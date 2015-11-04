@@ -9,5 +9,5 @@ if (!empty($_POST["login_su"]) AND !empty($_POST["password_su"]) AND !empty($_PO
     $email = htmlspecialchars($_POST["email_su"]);
     add_member($login, $password, $email, $db);
 }
-header("Location: home.php");
+header("Location: home.php"); //Changer avec la page du nouveau utilisateur
 ?>
