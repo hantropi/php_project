@@ -16,25 +16,64 @@ function add_member($login, $password, $email, $db) {
 	"password" => $password));
 }
 
-function check_user($login, $password, $email, $db) {
-    if (empty($email)) { //On ne chercher pas la valeur du champ email car elle n'est pas rentree par l'utilisateur
-	$query = $db -> prepare("SELECT * FROM users WHERE login = :login AND password = :password");
-	$query -> execute(array("login" => $login,
-	    "password" => $password));
-	$data = $query -> fetch();
-	$condition = $data["login"] == $login and $data["password"] == $password;
-    }
-    else if (empty($password)) { //Sinon on peut s'enregistrer avec un login et un mail deja utilise mais avec mot de passe different
-	$query = $db -> prepare("SELECT * FROM users WHERE login = :login AND email = :email");
-	$query -> execute(array("login" => $login,
-	    "email" => $email));
-	$data = $query -> fetch();
-	$condition = $data["login"] == $login and $data["email"] == $email;
-    }
-    else //Au cas ou on utilise la fonction avec des arguments vide ou null autre que les precedents definis
-	return false;
-    if ($condition)
+function check_user_signup($login, $email, $db) {
+    /* Fonction pour verifier les informations donnees lors de l'enregistrement d'un nouvel utilisateur */
+    $query = $db -> prepare("SELECT * FROM users WHERE login = :login OR email = :email");
+    $query -> execute(array("login" => $login,
+	"email" => $email));
+    if ($query -> fetch())
 	return true;
     return false;
+}
+
+function check_user_signin($login, $password, $db) {
+    /* Fonction pour ce connecter au site */
+    $query = $db -> prepare("SELECT * FROM users WHERE login = :login AND password = :password");
+    $query -> execute(array("login" => $login,
+	"password" => $password));
+    if ($query -> fetch())
+	return true;
+    return false;
+}
+
+function get_user_id($login, $db) {
+    $query = $db -> prepare("SELECT id FROM users WHERE login = :login");
+    $query -> execute(array("login" => $login));
+    $data = $query -> fetch();
+    return $data["id"];
+}
+
+function get_user_login($id, $db) {
+    $query = $db -> prepare("SELECT login FROM users WHERE id = :id");
+    $query -> execute(array("id" => $id));
+    $data = $query -> fetch();
+    return $data["login"];
+}
+
+function display_user_infos($id, $db) {
+    $query = $db -> prepare("SELECT login, email FROM users WHERE id = :id");
+    $query -> execute(array("id" => $id));
+    while ($data = $query -> fetch()) {
+	echo "Login : " . $data["login"] . "<br>";
+	echo "Email : " . $data["email"] . "<br>";
+    }
+}
+
+function display_news_feed($id, $db) { //Fonction difficile a coder : Plusieurs paramatres a prendre en compte au niveau de la requete en SQL (A voir !!!)
+    /* Fonction affichant le fil d'actualite de l'utilisateur */
+    /*$query = $db -> prepare("SELECT * FROM friends, posts WHERE ");
+       $query -> execute(array());
+       while ($data = $query -> fetch()) {
+       echo;
+       }*/
+}
+
+function display_user_friends($id, $db) {
+    $query = $db -> prepare("SELECT user2 FROM friends WHERE user1 = :id");
+    $query -> execute(array("id" => $id));
+    while ($data = $query -> fetch()) {
+	$friend_login = get_user_login($data["user2"], $db);
+	echo $friend_login . "<br>";
+    }
 }
 ?>

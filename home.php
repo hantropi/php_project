@@ -2,16 +2,17 @@
 session_start();
 //Mettre les cookies + variables de session
 ?>
+<!DOCTYPE html>
 <html>
   <head>
-    <title>Login</title>
+    <title>Home</title>
     <meta charset="utf-8"/>
   </head>
   <body>
     <h1>Sign up</h1>
     <?php
     if (!empty($_SESSION["add_error_msg"])) {
-	echo "<strong>" . $_SESSION["add_error_msg"] . "</strong><br>";
+	echo $_SESSION["add_error_msg"] . "<br>";
 	unset($_SESSION["add_error_msg"]); //Detruit la variable local $_SESSION["login_error_msg"]
     }
     ?>
@@ -21,10 +22,11 @@ session_start();
       <label for="email_su">Email :</label> <input type="text" id="email_su" name="email_su"/><br>
       <input type="submit" value="Sign up"/>
     </form>
+    
     <h1>Sign in</h1>
     <?php
     if (!empty($_SESSION["login_error_msg"])) {
-	echo "<strong>" . $_SESSION["login_error_msg"] . "</strong><br>";
+	echo $_SESSION["login_error_msg"] . "<br>";
 	unset($_SESSION["login_error_msg"]);
     }
     ?>

@@ -8,9 +8,10 @@ if (!empty($_POST["login_su"]) AND !empty($_POST["password_su"]) AND !empty($_PO
     $login = htmlspecialchars($_POST["login_su"]);
     $password = htmlspecialchars($_POST["password_su"]);
     $email = htmlspecialchars($_POST["email_su"]);
-    if (!check_user($login, null, $email, $db)) {
+    if (!check_user_signup($login, $email, $db)) {
 	add_member($login, $password, $email, $db);
-	header("Location: test.php"); //Changer par la page du nouveau utilisateur
+	$_SESSION["id"] = get_user_id($login, $db);
+	header("Location: user.php");
 	exit;
     }
     $_SESSION["add_error_msg"] = "Sorry, that username or email is already use. Please try again.";
