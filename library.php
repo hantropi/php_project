@@ -12,8 +12,8 @@ function connexion() {
 function add_member($login, $password, $email, $db) {
     $query = $db -> prepare("INSERT INTO users(login, password, email) VALUES(:login, :password, :email)");
     $query -> execute(array("login" => $login,
-	"email" => $email,
-	"password" => $password));
+	"password" => $password,
+	"email" => $email));
 }
 
 function check_user_signup($login, $email, $db) {
@@ -50,16 +50,7 @@ function get_user_login($id, $db) {
     return $data["login"];
 }
 
-function display_user_infos($id, $db) {
-    $query = $db -> prepare("SELECT login, email FROM users WHERE id = :id");
-    $query -> execute(array("id" => $id));
-    while ($data = $query -> fetch()) {
-	echo "Login : " . $data["login"] . "<br>";
-	echo "Email : " . $data["email"] . "<br>";
-    }
-}
-
-function display_news_feed($id, $db) { //Fonction difficile a coder : Plusieurs paramatres a prendre en compte au niveau de la requete en SQL (A voir !!!)
+function display_news_feed($id, $db) { //user.php //Fonction difficile a coder : Plusieurs paramatres a prendre en compte au niveau de la requete en SQL (A voir !!!)
     /* Fonction affichant le fil d'actualite de l'utilisateur */
     /*$query = $db -> prepare("SELECT * FROM friends, posts WHERE ");
        $query -> execute(array());
@@ -68,12 +59,19 @@ function display_news_feed($id, $db) { //Fonction difficile a coder : Plusieurs 
        }*/
 }
 
-function display_user_friends($id, $db) {
+function display_user_friends($id, $db) { //friends.php
     $query = $db -> prepare("SELECT user2 FROM friends WHERE user1 = :id");
     $query -> execute(array("id" => $id));
     while ($data = $query -> fetch()) {
 	$friend_login = get_user_login($data["user2"], $db);
 	echo $friend_login . "<br>";
     }
+}
+
+function display_user_infos($id, $db) { //options.php
+    $query = $db -> prepare("SELECT * FROM users WHERE id = :id");
+    $query -> execute(array("id" => $id));
+    $info = $query -> fetch();
+    return $info;
 }
 ?>

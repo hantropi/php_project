@@ -7,9 +7,13 @@ session_start();
   <head>
     <title>Home</title>
     <meta charset="utf-8"/>
+    <link rel="stylesheet" href="fonts/font-awesome-4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="global.css">
   </head>
   <body>
-    <h1>Sign up</h1>
+    <h1>PHP Project</h1>
+    
+    <h2>Sign up</h2>
     <?php
     if (!empty($_SESSION["add_error_msg"])) {
 	echo $_SESSION["add_error_msg"] . "<br>";
@@ -23,7 +27,7 @@ session_start();
       <input type="submit" value="Sign up"/>
     </form>
     
-    <h1>Sign in</h1>
+    <h2>Sign in</h2>
     <?php
     if (!empty($_SESSION["login_error_msg"])) {
 	echo $_SESSION["login_error_msg"] . "<br>";

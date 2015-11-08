@@ -9,17 +9,12 @@ $db = connexion();
   <head>
     <title><?php echo get_user_login($_SESSION["id"], $db); ?> - User Hub</title>
     <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="global.css">
   </head>
   <body>
-    <a href="friends.php">Gerer ses amis</a>
-    <a href="posts.php">Messages</a>
+    <?php require "menu.php" ?>
     
-    <h1>Mon profil</h1>
-    <?php //Affiche les infos de l'utilisateur
-    display_user_infos($_SESSION["id"], $db);
-    ?>
-    
-    <h1>Fil d'actualite</h1>
+    <h2>Fil d'actualite</h2>
     <?php //Affiche les evenements recents en lien avec l'utilisateur
     //display_news_feed($_SESSION["id"], $db);
     ?>
