@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if (isset($_GET["signout"])) { //Signout function
+    unset($_SESSION["id"]);
+    header("Location: home.php");
+}
+
 function connexion() {
     try {
 	$db = new PDO("mysql:host=localhost;dbname=php_project;charset=utf8", "root", "root", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
