@@ -1,12 +1,5 @@
 <?php
-session_start();
-
-if (isset($_GET["signout"])) { //Signout function
-    unset($_SESSION["id"]);
-    header("Location: home.php");
-}
-
-function connexion() {
+function connect() {
     try {
 	$db = new PDO("mysql:host=localhost;dbname=php_project;charset=utf8", "root", "root", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	return $db;
@@ -80,5 +73,22 @@ function display_user_infos($id, $db) { //options.php
     $query -> execute(array("id" => $id));
     $info = $query -> fetch();
     return $info;
+}
+
+function search_friend($name, $db) { //friends.php
+    $query = $db -> prepare("SELECT * FROM users WHERE login = :name OR first_name = :name OR last_name = :name");
+    $query -> execute(array("name" => $name));
+    if ($data = $query -> fetch()) {
+	do {
+	    echo "Login : " . $data["login"] . "<br>";
+	    echo "Prenom : " . $data["first_name"] . "<br>";
+	    echo "Nom : " . $data["last_name"] . "<br>";
+	    echo "Age : " . $data["age"] . "<br>";
+	    echo "Pays : " . $data["country"] . "<br>";
+	    echo "Email : " . $data["email"] . "<br>";
+	} while ($data = $query -> fetch());
+    }
+    else
+	echo "Votre requete ne donne aucun resultat.";
 }
 ?>

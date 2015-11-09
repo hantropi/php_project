@@ -1,7 +1,8 @@
 <?php
+session_start();
 include_once("library.php");
 
-$db = connexion();
+$db = connect();
 ?>
 <!DOCTYPE html>
 <html>

@@ -2,7 +2,7 @@
 session_start();
 include_once("library.php");
 
-$db = connexion();
+$db = connect();
 
 if (!empty($_POST["login_su"]) AND !empty($_POST["password_su"]) AND !empty($_POST["email_su"])) {
     $login = htmlspecialchars($_POST["login_su"]);
