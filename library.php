@@ -36,6 +36,13 @@ function check_user_signin($login, $password, $db) {
     return false;
 }
 
+function check_user_friend($user_id, $friend_id, $db) {
+    $query = $db -> prepare("SELECT * FROM friends WHERE user1 = :user1 AND user2 = :user2");
+    $query -> execute(array("user1" => $user_id,
+	"user2" => $friend_id));
+    return $query -> fetch();
+}
+
 function get_user_id($login, $db) {
     $query = $db -> prepare("SELECT id FROM users WHERE login = :login");
     $query -> execute(array("login" => $login));
@@ -62,10 +69,12 @@ function display_news_feed($id, $db) { //user.php //Fonction difficile a coder :
 function display_user_friends($id, $db) { //friends.php
     $query = $db -> prepare("SELECT user2 FROM friends WHERE user1 = :id");
     $query -> execute(array("id" => $id));
+    echo "<ul>"; //On creer une liste pour ordonner le rangement des amis
     while ($data = $query -> fetch()) {
 	$friend_login = get_user_login($data["user2"], $db);
-	echo $friend_login . "<br>";
+	echo "<li>" . $friend_login . "</li><br>";
     }
+    echo "</ul>";
 }
 
 function display_user_infos($id, $db) { //options.php
@@ -75,20 +84,9 @@ function display_user_infos($id, $db) { //options.php
     return $info;
 }
 
-function search_friend($name, $db) { //friends.php
+function search_friend($name, $user_id, $db) { //Search an another user in the database
     $query = $db -> prepare("SELECT * FROM users WHERE login = :name OR first_name = :name OR last_name = :name");
     $query -> execute(array("name" => $name));
-    if ($data = $query -> fetch()) {
-	do {
-	    echo "Login : " . $data["login"] . "<br>";
-	    echo "Prenom : " . $data["first_name"] . "<br>";
-	    echo "Nom : " . $data["last_name"] . "<br>";
-	    echo "Age : " . $data["age"] . "<br>";
-	    echo "Pays : " . $data["country"] . "<br>";
-	    echo "Email : " . $data["email"] . "<br>";
-	} while ($data = $query -> fetch());
-    }
-    else
-	echo "Votre requete ne donne aucun resultat.";
+    return $query -> fetch();
 }
 ?>
