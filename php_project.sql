@@ -27,7 +27,7 @@ CREATE TABLE `friends` (
   `user1` int(11) NOT NULL,
   `user2` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,6 +36,7 @@ CREATE TABLE `friends` (
 
 LOCK TABLES `friends` WRITE;
 /*!40000 ALTER TABLE `friends` DISABLE KEYS */;
+INSERT INTO `friends` VALUES (1,1,2),(2,2,1);
 /*!40000 ALTER TABLE `friends` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -76,8 +77,12 @@ CREATE TABLE `users` (
   `login` varchar(40) NOT NULL,
   `password` varchar(60) NOT NULL,
   `email` varchar(70) NOT NULL,
+  `first_name` varchar(40) DEFAULT NULL,
+  `last_name` varchar(60) DEFAULT NULL,
+  `age` int(2) DEFAULT NULL,
+  `country` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +91,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'victor','root','victor.gouron@hotmail.fr');
+INSERT INTO `users` VALUES (1,'victor','root','victor.gouron@hotmail.fr',NULL,NULL,NULL,NULL),(2,'victor_gouron','root','victor.gouron@gmail.com',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -99,4 +104,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-06 23:41:46
+-- Dump completed on 2015-11-10 14:52:04
