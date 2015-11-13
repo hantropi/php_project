@@ -12,7 +12,7 @@ $db = connect();
     <link rel="stylesheet" type="text/css" href="global.css">
   </head>
   <body>
-    <?php require "menu.php" ?>
+    <?php require "menu.html" ?>
     
     <h2>Mon profil</h2>
     <?php //Affiche les infos de l'utilisateur

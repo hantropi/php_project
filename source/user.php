@@ -12,7 +12,7 @@ $db = connect();
     <link rel="stylesheet" type="text/css" href="global.css">
   </head>
   <body>
-    <?php require "menu.php" ?>
+    <?php require "menu.html" ?>
     
     <h2>Fil d'actualite</h2>
     <?php //Affiche les evenements recents en lien avec l'utilisateur

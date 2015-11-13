@@ -12,7 +12,7 @@ $db = connect();
     <link rel="stylesheet" type="text/css" href="global.css">
   </head>
   <body>
-    <?php require "menu.php" ?>
+    <?php require "menu.html" ?>
     
     <form action="friends.php" method="get">
       <label for="search_friend">Rechercher un ami :</label> <input type="text" id="search_friend" name="friend_name">
