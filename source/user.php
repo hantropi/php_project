@@ -16,7 +16,7 @@ $db = connect();
     
     <h2>Fil d'actualite</h2>
     <?php //Affiche les evenements recents en lien avec l'utilisateur
-    //display_news_feed($_SESSION["id"], $db);
+    display_news_feed($_SESSION["id"], $db);
     ?>
   </body>
 </html>

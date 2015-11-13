@@ -16,7 +16,7 @@ $db = connect();
     
     <h2>Mon profil</h2>
     <?php //Affiche les infos de l'utilisateur
-    $info = display_user_infos($_SESSION["id"], $db);
+    $info = return_user_infos($_SESSION["id"], $db);
     echo "Login : " . $info["login"] . "<br>";
     echo "Prenom : " . $info["first_name"] . "<br>";
     echo "Nom : " . $info["last_name"] . "<br>";

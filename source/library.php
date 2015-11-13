@@ -57,13 +57,20 @@ function get_user_login($id, $db) {
     return $data["login"];
 }
 
-function display_news_feed($id, $db) { //user.php //Fonction difficile a coder : Plusieurs paramatres a prendre en compte au niveau de la requete en SQL (A voir !!!)
+function display_news_feed($id, $db) { //user.php
     /* Fonction affichant le fil d'actualite de l'utilisateur */
-    /*$query = $db -> prepare("SELECT * FROM friends, posts WHERE ");
-       $query -> execute(array());
-       while ($data = $query -> fetch()) {
-       echo;
-       }*/
+    $query = $db -> prepare("SELECT user2 FROM friends WHERE user1 = :user");
+    $query -> execute(array("user" => $id));
+    while ($data = $query -> fetch()) { //On recupere l'id de chaque amis de l'utilisateur
+	$sc_query = $db -> prepare("SELECT * FROM posts WHERE user = :user");
+	$sc_query -> execute(array("user" => $data["user2"]));
+	while ($sc_data = $sc_query -> fetch()) { //On affiche chaque messages ecrit par l'ami de l'utilisateur
+	    $friend_login = get_user_login($sc_data["user"], $db);
+	    echo "Message de " . $friend_login . "<br>";
+	    echo $sc_data["title"] . "<br>";
+	    echo $sc_data["content"] . "<br><br>";
+	}
+    }
 }
 
 function display_user_friends($id, $db) { //friends.php
@@ -77,7 +84,7 @@ function display_user_friends($id, $db) { //friends.php
     echo "</ul>";
 }
 
-function display_user_infos($id, $db) { //options.php
+function return_user_infos($id, $db) { //options.php
     $query = $db -> prepare("SELECT * FROM users WHERE id = :id");
     $query -> execute(array("id" => $id));
     $info = $query -> fetch();
