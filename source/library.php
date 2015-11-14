@@ -19,6 +19,7 @@ function add_member($login, $password, $email, $db) {
 }
 
 function get_user_id($login, $db) {
+    /* Fonction recuperant l'id d'un utilisateur */
     $query = $db -> prepare("SELECT id FROM users WHERE login = ?");
     $query -> execute(array($login));
     $data = $query -> fetch();
@@ -26,6 +27,7 @@ function get_user_id($login, $db) {
 }
 
 function get_user_login($id, $db) {
+    /* Fonction recuperant le login d'un utilisateur */
     $query = $db -> prepare("SELECT login FROM users WHERE id = ?");
     $query -> execute(array($id));
     $data = $query -> fetch();
