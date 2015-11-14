@@ -44,26 +44,26 @@ function check_user_friend($user_id, $friend_id, $db) {
 }
 
 function get_user_id($login, $db) {
-    $query = $db -> prepare("SELECT id FROM users WHERE login = :login");
-    $query -> execute(array("login" => $login));
+    $query = $db -> prepare("SELECT id FROM users WHERE login = ?");
+    $query -> execute(array($login));
     $data = $query -> fetch();
     return $data["id"];
 }
 
 function get_user_login($id, $db) {
-    $query = $db -> prepare("SELECT login FROM users WHERE id = :id");
-    $query -> execute(array("id" => $id));
+    $query = $db -> prepare("SELECT login FROM users WHERE id = ?");
+    $query -> execute(array($id));
     $data = $query -> fetch();
     return $data["login"];
 }
 
 function display_news_feed($id, $db) { //user.php
     /* Fonction affichant le fil d'actualite de l'utilisateur */
-    $query = $db -> prepare("SELECT user2 FROM friends WHERE user1 = :user");
-    $query -> execute(array("user" => $id));
+    $query = $db -> prepare("SELECT user2 FROM friends WHERE user1 = ?");
+    $query -> execute(array($id));
     while ($data = $query -> fetch()) { //On recupere l'id de chaque amis de l'utilisateur
-	$sc_query = $db -> prepare("SELECT * FROM posts WHERE user = :user");
-	$sc_query -> execute(array("user" => $data["user2"]));
+	$sc_query = $db -> prepare("SELECT * FROM posts WHERE user = ?");
+	$sc_query -> execute(array($data["user2"]));
 	while ($sc_data = $sc_query -> fetch()) { //On affiche chaque messages ecrit par l'ami de l'utilisateur
 	    $friend_login = get_user_login($sc_data["user"], $db);
 	    echo "Message de " . $friend_login . "<br>";
@@ -74,8 +74,8 @@ function display_news_feed($id, $db) { //user.php
 }
 
 function display_user_friends($id, $db) { //friends.php
-    $query = $db -> prepare("SELECT user2 FROM friends WHERE user1 = :id");
-    $query -> execute(array("id" => $id));
+    $query = $db -> prepare("SELECT user2 FROM friends WHERE user1 = ?");
+    $query -> execute(array($id));
     echo "<ul>"; //On creer une liste pour ordonner le rangement des amis
     while ($data = $query -> fetch()) {
 	$friend_login = get_user_login($data["user2"], $db);
@@ -85,8 +85,8 @@ function display_user_friends($id, $db) { //friends.php
 }
 
 function return_user_infos($id, $db) { //options.php
-    $query = $db -> prepare("SELECT * FROM users WHERE id = :id");
-    $query -> execute(array("id" => $id));
+    $query = $db -> prepare("SELECT * FROM users WHERE id = ?");
+    $query -> execute(array($id));
     $info = $query -> fetch();
     return $info;
 }
