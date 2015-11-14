@@ -1,5 +1,3 @@
-<h2>Mon profil</h2>
-
 <?php //Affiche les infos de l'utilisateur
 $info = return_user_infos($_SESSION["id"], $db);
 echo "Login : " . $info["login"] . "<br>";

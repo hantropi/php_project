@@ -11,7 +11,7 @@ if (!empty($_POST["login_su"]) AND !empty($_POST["password_su"]) AND !empty($_PO
     if (!check_user_signup($login, $email, $db)) {
 	add_member($login, $password, $email, $db);
 	$_SESSION["id"] = get_user_id($login, $db);
-	header("Location: user.php");
+	header("Location: user.php?news=true");
 	exit;
     }
     $_SESSION["add_error_msg"] = "Sorry, that username or email is already use. Please try again.";
