@@ -8,7 +8,12 @@ if (!empty($_POST["login_su"]) AND !empty($_POST["password_su"]) AND !empty($_PO
     $login = htmlspecialchars($_POST["login_su"]);
     $password = htmlspecialchars($_POST["password_su"]);
     $email = htmlspecialchars($_POST["email_su"]);
-    if (!check_user_signup($login, $email, $db)) {
+    
+    $query = $db -> prepare("SELECT * FROM users WHERE login = :login OR email = :email");
+    $query -> execute(array("login" => $login,
+	"email" => $email));
+    
+    if (!$query -> fetch()) {
 	add_member($login, $password, $email, $db);
 	$_SESSION["id"] = get_user_id($login, $db);
 	header("Location: user.php?news=true");
