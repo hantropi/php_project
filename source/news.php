@@ -8,9 +8,9 @@ while ($data = $query -> fetch()) {
 }
 $query -> closeCursor();
 
-//On execute une requete pour obtenir chaque messages
+//On execute une requete pour obtenir chaques messages et lien entre utilisateurs
 $users_string = implode(",", $users);
-$query = $db -> prepare("SELECT user, title, content FROM posts WHERE user IN ($users_string)"); //Rajouter une limite de nombre et de temps
+$query = $db -> prepare("SELECT user, title, content FROM posts WHERE user IN ($users_string) ORDER BY id DESC LIMIT 0, 50"); //Rajouter une limite de nombre et de temps
 $query -> execute($users);
 
 //On affiche tous les posts obtenus
@@ -18,6 +18,7 @@ while ($data = $query -> fetch()) {
     $login = get_user_login($data["user"], $db);
     echo "Message de <b>" . $login . "</b> :<br>"; //Afficher la date du post (si possible)
     echo "<b>" . $data["title"] . "</b><br>";
-    echo $data["content"] . "<br><br>";
+    echo $data["content"] . "<br>";
+    echo "<a href='user.php?posts=true'>Repondre</a><br><br>";
 }
 ?>
