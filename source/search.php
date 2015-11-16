@@ -1,5 +1,5 @@
 <?php
-$friend_name = htmlspecialchars($_GET["friend_name"]);
+$friend_name = htmlspecialchars($_POST["friend_name"]);
 $query = $db -> prepare("SELECT * FROM users WHERE login = :name OR first_name = :name OR last_name = :name");
 $query -> execute(array("name" => $friend_name));
 $data = $query -> fetch();

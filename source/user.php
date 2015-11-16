@@ -24,16 +24,18 @@ $db = connect();
 	echo "<h2>Fil d'actualite</h2>";
 	require "news.php";
     }
-    if (isset($_GET["friends"]) or isset($_GET["friend_name"])) {
+    if (isset($_GET["friends"])) {
 	require "search.html";
-	if (isset($_GET["friend_name"]))
+	if (isset($_POST["friend_name"])) //Changement GET en POST (search.html formulaire method)
 	    require "search.php";
 	echo "<h2>Amis</h2>";
 	require "friends.php";
     }
     if (isset($_GET["posts"])) {
 	echo "<h2>Messages</h2>";
-	require "posts.php";
+	require "posts.html";
+	if (isset($_POST["title"]) and isset($_POST["content"]))
+	    require "posts.php";
     }
     if (isset($_GET["settings"]) or isset($_GET["change"]) or isset($_POST["change_value"])) {
 	echo "<h2>Options</h2>";
