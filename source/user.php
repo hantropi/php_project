@@ -32,8 +32,10 @@ $db = connect();
 	require "friends.php";
     }
     if (isset($_GET["posts"])) {
-	echo "<h2>" . "Messages" . "</h2>";
-	require "posts.php";
+		require "posts.html";
+		if (isset($_POST["title"]) and isset($_POST["content"])){
+			require "posts.php";
+		}
     }
     if (isset($_GET["options"])) {
 	echo "<h2>" . "Options" . "</h2>";
