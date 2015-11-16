@@ -16,28 +16,38 @@ $db = connect();
       <li><a href="user.php?news=true">Fil d'actualite</a></li>
       <li><a href="user.php?friends=true">Gerer ses amis</a></li>
       <li><a href="user.php?posts=true">Messages</a></li>
-      <li><a href="user.php?options=true">Options</a></li>
+      <li><a href="user.php?settings=true">Options</a></li>
       <li><a href="user.php?signout=true">Deconnexion</a></li>
     </ul>
     <?php
     if (isset($_GET["news"])) {
-	echo "<h2>" . "Fil d'actualite" . "</h2>";
+	echo "<h2>Fil d'actualite</h2>";
 	require "news.php";
     }
     if (isset($_GET["friends"]) or isset($_GET["friend_name"])) {
 	require "search.html";
 	if (isset($_GET["friend_name"]))
 	    require "search.php";
-	echo "<h2>" . "Amis" . "</h2>";
+	echo "<h2>Amis</h2>";
 	require "friends.php";
     }
     if (isset($_GET["posts"])) {
-	echo "<h2>" . "Messages" . "</h2>";
+	echo "<h2>Messages</h2>";
 	require "posts.php";
     }
-    if (isset($_GET["options"])) {
-	echo "<h2>" . "Options" . "</h2>";
-	require "options.php";
+    if (isset($_GET["settings"]) or isset($_GET["change"]) or isset($_POST["change_value"])) {
+	echo "<h2>Options</h2>";
+	if (!empty($_GET["change"])) {
+	    $change = htmlspecialchars($_GET["change"]);
+	    require "change.html";
+	}
+	if (!empty($_POST["change_value"])) {
+	    $value = htmlspecialchars($_POST["change_value"]);
+	    require "change.php";
+	}
+	if (isset($_GET["settings_error"]))
+	    echo "<b>Erreur : Champ et/ou valeur errone(s)</b><br>";
+	require "settings.php";
     }
     if (isset($_GET["signout"])) {
 	unset($_SESSION["id"]);
