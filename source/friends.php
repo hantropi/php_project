@@ -18,15 +18,19 @@ echo "<h2>Amis</h2>";
 echo "<table border='1'>"; //On creer un tableau pour ordonner le rangement des amis
 echo "<tr>";
 echo "<th>Login</th>";
-echo "<th>Prenom</th>";
 echo "<th>Nom</th>";
+echo "<th>Prenom</th>";
+echo "<th>Age</th>";
+echo "<th>Pays</th>";
 echo "<th>Email</th>";
 echo "</tr>";
 while ($data = $query -> fetch()) {
     echo "<tr>";
     echo "<td>" . $data["login"] . "</td>";
-    echo "<td>" . $data["first_name"] . "</td>";
     echo "<td>" . $data["last_name"] . "</td>";
+    echo "<td>" . $data["first_name"] . "</td>";
+    echo "<td>" . $data["age"] . "</td>";
+    echo "<td>" . $data["country"] . "</td>";
     echo "<td>" . $data["email"] . "</td>";
     echo "</tr>";
 }
