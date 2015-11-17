@@ -5,13 +5,13 @@ $query -> execute(array("name" => $friend_name));
 $data = $query -> fetch();
 $query -> closeCursor();
 
+$champs = ["Login", "Prenom", "Nom", "Age", "Pays", "Email"];
+$informations = ["login", "first_name", "last_name", "age", "country", "email"];
+
 if ($data) { //Faire deux tableau et une boucle, comme pour settings.php
-    echo "Login : " . $data["login"] . "<br>";
-    echo "Prenom : " . $data["first_name"] . "<br>";
-    echo "Nom : " . $data["last_name"] . "<br>";
-    echo "Age : " . $data["age"] . "<br>";
-    echo "Pays : " . $data["country"] . "<br>";
-    echo "Email : " . $data["email"] . "<br>";
+    for ($i = 0 ; $i < 6 ; $i++) {
+	echo $champs[$i] . " : " . $data[$informations[$i]] . "<br>";
+    }
     
     $_SESSION["friend_id"] = $data["id"];
     $query = $db -> prepare("SELECT * FROM friends WHERE user1 = :user1 AND user2 = :user2");
