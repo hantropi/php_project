@@ -1,10 +1,10 @@
-<form action="user.php?posts=true" method="post">
+<form action="user.php?posts=true" id="post_form" method="post">
   <fieldset>
     <legend>
       <h2>Message</h2>
-    </legend>
+    </legend>    
     <label for="subject">Sujet</label> <input type="text" id="subject" name="title"/><br>
-    <label for="post">Corps du message</label> <input type="text" id="post" name="content"/><br>
+    <textarea name="content" form="post_form"></textarea><br>
     <input type="submit" value="Envoyer"/>
   </fieldset>
 </form>

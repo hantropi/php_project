@@ -3,10 +3,13 @@ $query = $db -> prepare("SELECT * FROM users WHERE id = ?");
 $query -> execute(array($_SESSION["id"]));
 $info = $query -> fetch();
 
-echo "Login : " . $info["login"] . " <a href='user.php?change=login'>Modifier</a><br>";
-echo "Prenom : " . $info["first_name"] . " <a href='user.php?change=first_name'>Modifier</a><br>";
-echo "Nom : " . $info["last_name"] . " <a href='user.php?change=last_name'>Modifier</a><br>";
-echo "Age : " . $info["age"] . " <a href='user.php?change=age'>Modifier</a><br>";
-echo "Pays : " . $info["country"] . " <a href='user.php?change=country'>Modifier</a><br>";
-echo "Email : " . $info["email"] . " <a href='user.php?change=email'>Modifier</a><br>";
+$champs = ["Login", "Nom", "Prenom", "Age", "Pays", "Email"];
+$information = ['login', 'last_name', 'first_name', 'age', 'country', 'email'];
+
+echo "<h2>Parametres</h2>";
+echo "<table border='1'>";
+for ($i = 0 ; $i < 6 ; $i++) {
+    echo "<tr><td id='settings'>" . $champs[$i] . "</td><td>" . $info[$information[$i]] . "</td><td><a href='user.php?change=" . $information[$i] . "'>Modifier</a></td></tr>";
+}
+echo "</table>"
 ?>

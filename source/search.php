@@ -1,11 +1,11 @@
 <?php
-$friend_name = htmlspecialchars($_POST["friend_name"]);
+$friend_name = htmlspecialchars($_GET["friend_name"]);
 $query = $db -> prepare("SELECT * FROM users WHERE login = :name OR first_name = :name OR last_name = :name");
 $query -> execute(array("name" => $friend_name));
 $data = $query -> fetch();
 $query -> closeCursor();
 
-if ($data) {
+if ($data) { //Faire deux tableau et une boucle, comme pour settings.php
     echo "Login : " . $data["login"] . "<br>";
     echo "Prenom : " . $data["first_name"] . "<br>";
     echo "Nom : " . $data["last_name"] . "<br>";
@@ -20,8 +20,8 @@ if ($data) {
     $user_friend = $query -> fetch();
     $query -> closeCursor();
     
-    if ($_SESSION["friend_id"] != $_SESSION["id"] and !$user_friend) //Pour eviter de s'ajouter soi meme en ami
-	echo "<a href='user.php?friend_name=true&&add_friend=true'>Ajouter</a><br>";
+    if ($_SESSION["friend_id"] != $_SESSION["id"] and !$user_friend) //Pour eviter de s'ajouter soi meme en ami ou un utilisateur qu'on a deja en ami
+	echo "<a href='user.php?friends=true&friend_name=true&add_friend=true'>Ajouter</a><br>";
 }
 else
     echo "Votre requete ne donne aucun resultat." . "<br>";

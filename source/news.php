@@ -14,11 +14,12 @@ $query = $db -> prepare("SELECT user, title, content FROM posts WHERE user IN ($
 $query -> execute($users);
 
 //On affiche tous les posts obtenus
+echo "<h2>Fil d'actualite</h2>";
 while ($data = $query -> fetch()) {
     $login = get_user_login($data["user"], $db);
     echo "Message de <b>" . $login . "</b> :<br>"; //Afficher la date du post (si possible)
-    echo "<b>" . $data["title"] . "</b><br>";
-    echo $data["content"] . "<br>";
+    echo "<article><b>" . $data["title"] . "</b><br>";
+    echo nl2br($data["content"]) . "<br></article>";
     echo "<a href='user.php?posts=true'>Repondre</a><br><br>";
 }
 ?>
