@@ -2,7 +2,7 @@
 function connect() {
     /* Fonction permettant de ce connecter a la base de donnee du site */
     try {
-	$db = new PDO("mysql:host=localhost;dbname=php_project;charset=utf8", "root", "root", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+	$db = new PDO("mysql:host=localhost;dbname=php_project;charset=utf8", "root", "", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 	return $db;
     }
     catch (Exception $e) {
@@ -32,5 +32,59 @@ function get_user_login($id, $db) {
     $query -> execute(array($id));
     $data = $query -> fetch();
     return $data["login"];
+}
+
+function check_value($change, $value, $db) {
+    /* Verifie que l'entree est conforme */
+    if ($change == "login") {
+	$query = $db -> prepare("SELECT id FROM users WHERE login = ?");
+	$query -> execute(array($value));
+	return $query -> fetch();
+    }
+    else if ($change == "last_name") {
+	$query = $db -> prepare("SELECT id FROM users WHERE last_name = ?");
+	$query -> execute(array($value));
+	return $query -> fetch();
+    }
+    else if ($change == "first_name") {
+	$query = $db -> prepare("SELECT id FROM users WHERE first_name = ?");
+	$query -> execute(array($value));
+	return $query -> fetch();
+    }
+    else if ($change == "email") {
+	$query = $db -> prepare("SELECT id FROM users WHERE email = ?");
+	$query -> execute(array($value));
+	return $query -> fetch();
+    }
+    else if ($change == "age") {
+	if ($value > 1 and $value < 100) //L'age doit etre limitee
+	    return false;
+	return true;
+    }
+    else if ($change == "country") //On ce fiche de l'endroit ou vit l'utilisateur
+	return false;
+    return true;
+}
+
+function update_settings($change, $value, $id, $db) {
+    /* Modifie la valeur rentree par rapport au champ souhaite */
+    if ($change == "login")
+	$query = $db -> prepare("UPDATE users SET login = :value WHERE id = :user");
+    else if ($change == "last_name")
+	$query = $db -> prepare("UPDATE users SET last_name = :value WHERE id = :user");
+    else if ($change == "first_name")
+	$query = $db -> prepare("UPDATE users SET first_name = :value WHERE id = :user");
+    else if ($change == "age")
+	$query = $db -> prepare("UPDATE users SET age = :value WHERE id = :user");
+    else if ($change == "country")
+	$query = $db -> prepare("UPDATE users SET country = :value WHERE id = :user");
+    else if ($change == "email")
+	$query = $db -> prepare("UPDATE users SET email = :value WHERE id = :user");
+    else {
+	header("Location: user.php?settings=true");
+	exit;
+    }
+    $query -> execute(array("value" => $value,
+	"user" => $id));
 }
 ?>

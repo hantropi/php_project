@@ -1,11 +1,27 @@
+@font-face {
+    font-family: Lato;
+    src: url(../fonts/lato-webfont.ttf);
+}
+
 body, h1, h2 {
+    font-family: Lato;
+}
+
+article {
     font-family: Helvetica, Arial;
 }
 
-body {
-    font-weight: lighter;
+table, th, td {
+    width: 50%;
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 
-h1, h2 {
-    font-weight: normal;
+th, td, td#settings {
+    padding: 15px;
+    text-align: center;
+}
+
+td#settings {
+    width: 20%;
 }

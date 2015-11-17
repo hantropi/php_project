@@ -1,17 +1,17 @@
 <?php
-$friend_name = htmlspecialchars($_POST["friend_name"]);
+$friend_name = htmlspecialchars($_GET["friend_name"]);
 $query = $db -> prepare("SELECT * FROM users WHERE login = :name OR first_name = :name OR last_name = :name");
 $query -> execute(array("name" => $friend_name));
 $data = $query -> fetch();
 $query -> closeCursor();
 
-if ($data) {
-    echo "Login : " . $data["login"] . "<br>";
-    echo "Prenom : " . $data["first_name"] . "<br>";
-    echo "Nom : " . $data["last_name"] . "<br>";
-    echo "Age : " . $data["age"] . "<br>";
-    echo "Pays : " . $data["country"] . "<br>";
-    echo "Email : " . $data["email"] . "<br>";
+$champs = ["Login", "Prenom", "Nom", "Age", "Pays", "Email"];
+$informations = ["login", "first_name", "last_name", "age", "country", "email"];
+
+if ($data) { //Faire deux tableau et une boucle, comme pour settings.php
+    for ($i = 0 ; $i < 6 ; $i++) {
+	echo $champs[$i] . " : " . $data[$informations[$i]] . "<br>";
+    }
     
     $_SESSION["friend_id"] = $data["id"];
     $query = $db -> prepare("SELECT * FROM friends WHERE user1 = :user1 AND user2 = :user2");
@@ -20,8 +20,8 @@ if ($data) {
     $user_friend = $query -> fetch();
     $query -> closeCursor();
     
-    if ($_SESSION["friend_id"] != $_SESSION["id"] and !$user_friend) //Pour eviter de s'ajouter soi meme en ami
-	echo "<a href='user.php?friend_name=true&&add_friend=true'>Ajouter</a><br>";
+    if ($_SESSION["friend_id"] != $_SESSION["id"] and !$user_friend) //Pour eviter de s'ajouter soi meme en ami ou un utilisateur qu'on a deja en ami
+	echo "<a href='user.php?friends=true&friend_name=true&add_friend=true'>Ajouter</a><br>";
 }
 else
     echo "Votre requete ne donne aucun resultat." . "<br>";
