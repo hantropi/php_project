@@ -18,6 +18,5 @@ if (!empty($_POST["login_si"]) AND !empty($_POST["password_si"])) {
 	exit;
     }
 }
-$_SESSION["login_error_msg"] = "Sorry, that username or password is incorrect. Please try again.";
-header("Location: home.php");
+header("Location: home.php?error_signin=true");
 ?>

@@ -15,35 +15,35 @@ $db = connect();
     <ul>
       <li><a href="user.php?news=true">Fil d'actualite</a></li>
       <li><a href="user.php?friends=true">Gerer ses amis</a></li>
-      <li><a href="user.php?posts=true">Messages</a></li>
+      <li><a href="user.php?post=true">Messages</a></li>
       <li><a href="user.php?settings=true">Parametres</a></li>
       <li><a href="user.php?signout=true">Deconnexion</a></li>
     </ul>
     <?php
-    if (isset($_GET["news"])) { //Affichage des actualite vis a vis de l'utilisateur
+    if (isset($_GET["news"])) { //Affichage des actualites de l'utilisateur
 	require "news.php";
     }
-    if (isset($_GET["friends"]) or isset($_GET["friend_name"])) { //Recherche d'un ami et affichage de l'ensemble de ses amis
+    if (isset($_GET["friends"])) { //Recherche d'une personne et affichage de l'ensemble de ses amis
 	require "search.html";
-	if (isset($_GET["friend_name"]))
+	if (isset($_POST["friend_name"]))
 	    require "search.php";
+	if (isset($_GET["add_friend"]))
+	    require "add_friend.php";
 	require "friends.php";
     }
-    if (isset($_GET["posts"])) { //Ecriture d'un message
-	require "posts.html";
+    if (isset($_GET["post"])) { //Ecriture d'un message
+	require "post.html";
 	if (isset($_POST["title"]) and isset($_POST["content"]))
-	    require "posts.php";
+	    require "post.php";
     }
-    if (isset($_GET["settings"]) or isset($_GET["change"]) or isset($_POST["change_value"])) { //Affichage et modifications des parametres de l'utilisateur
+    if (isset($_GET["settings"]) or isset($_GET["change"]) or isset($_GET["error_change"])) { //Affichage et modifications des parametres de l'utilisateur
 	if (!empty($_GET["change"])) {
-	    $change = htmlspecialchars($_GET["change"]);
 	    require "change.html";
 	}
 	if (!empty($_POST["change_value"])) {
-	    $value = htmlspecialchars($_POST["change_value"]);
 	    require "change.php";
 	}
-	if (isset($_GET["settings_error"]))
+	if (isset($_GET["error_change"]))
 	    echo "<b>Erreur : Champ et/ou valeur errone(s)</b><br>";
 	require "settings.php";
     }

@@ -1,30 +1,7 @@
-<?php
-if ($change == "login") {
-    $value = "Login";
-}
-else if ($change == "password") {
-    $value = "Mot de passe";
-}
-else if ($change == "first_name") {
-    $value = "Prenom";
-}
-else if ($change == "last_name") {
-    $value = "Nom";
-}
-else if ($change == "age") {
-    $value = "Age";
-}
-else if ($change == "country") {
-    $value = "Pays";
-}
-else if ($change == "email") {
-    $value = "Email";
-}
-else { //Quitter la recheche
-    header("Location: user.php?settings=true");
-    exit;
-}
+<?php //Affiche un formulaire pour modifier le champ souhaite par l'utilisateur
+$field_to_change = htmlspecialchars($_GET["change"]);
+$field = find_field($field_to_change);
 ?>
-<form action="user.php?change=<?php echo $change; ?>" method="post">
-  <label for="entry"><?php echo $value . " :"; ?></label> <input type="text" id="entry" name="change_value"/><br>
+<form action="user.php?change=<?php echo $field_to_change; ?>" method="post">
+  <label for="entry"><?php echo $field . " :"; ?></label> <input type="text" id="entry" name="change_value"/><br>
 </form>

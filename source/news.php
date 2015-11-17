@@ -20,6 +20,6 @@ while ($data = $query -> fetch()) {
     echo "Message de <b>" . $login . "</b> :<br>"; //Afficher la date du post (si possible)
     echo "<article><b>" . $data["title"] . "</b><br>";
     echo nl2br($data["content"]) . "<br></article>";
-    echo "<a href='user.php?posts=true'>Repondre</a><br><br>";
+    echo "<a href='user.php?post=true&post_author=" . $login . "'>Repondre</a><br><br>";
 }
 ?>

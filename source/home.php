@@ -1,7 +1,3 @@
-<?php
-session_start();
-//Mettre les cookies + variables de session
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,13 +15,11 @@ session_start();
 	  <h2>Inscription</h2> <!-- Sign Up -->
 	</legend>
 	<?php
-	if (!empty($_SESSION["add_error_msg"])) {
-	    echo "<b>" . $_SESSION["add_error_msg"] . "</b><br>";
-	    unset($_SESSION["add_error_msg"]); //Detruit la variable local $_SESSION["login_error_msg"]
-	}
+	if (!empty($_GET["error_signup"]))
+	    echo "<b>Sorry, an information requiered is already use or empty . Please try again.</b><br>";
 	?>
-	<label for="login_su">Username :</label> <input type="text" id="login_su" name="login_su"/><br>
-	<label for="password_su">Password :</label> <input type="password" id="password_su" name="password_su"/><br>
+	<label for="login_su">Login :</label> <input type="text" id="login_su" name="login_su"/><br>
+	<label for="password_su">Mot de passe :</label> <input type="password" id="password_su" name="password_su"/><br>
 	<label for="email_su">Email :</label> <input type="text" id="email_su" name="email_su"/><br>
 	<input type="submit" value="Sign up"/>
       </fieldset>
@@ -37,13 +31,11 @@ session_start();
 	  <h2>Connexion</h2> <!-- Sign In -->
 	</legend>
 	<?php
-	if (!empty($_SESSION["login_error_msg"])) {
-	    echo "<b>" . $_SESSION["login_error_msg"] . "</b><br>";
-	    unset($_SESSION["login_error_msg"]);
-	}
+	if (isset($_GET["error_signin"]))
+	    echo "<b>Sorry, that username or password is incorrect. Please try again.</b><br>";
 	?>
 	<label for="login_si">Login :</label> <input type="text" id="login_si" name="login_si"/><br>
-	<label for="password_si">Password :</label> <input type="password" id="password_si" name="password_si"/><br>
+	<label for="password_si">Mot de passe :</label> <input type="password" id="password_si" name="password_si"/><br>
 	<input type="submit" value="Sign in"/>
       </fieldset>
     </form>

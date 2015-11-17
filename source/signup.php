@@ -13,15 +13,12 @@ if (!empty($_POST["login_su"]) AND !empty($_POST["password_su"]) AND !empty($_PO
     $query -> execute(array("login" => $login,
 	"email" => $email));
     
-    if (!$query -> fetch()) {
-	add_member($login, $password, $email, $db);
+    if (!$query -> fetch()) { //Si le nom ou l'email n'est pas deja utilise
+	add_member($login, $password, $email, $db); //On rajoute cet utilisateur
 	$_SESSION["id"] = get_user_id($login, $db);
 	header("Location: user.php?news=true");
 	exit;
     }
-    $_SESSION["add_error_msg"] = "Sorry, that username or email is already use. Please try again.";
 }
-else
-    $_SESSION["add_error_msg"] = "Sorry, an information requiered is empty . Please try again.";
-header("Location: home.php"); //Changer avec la page du nouveau utilisateur
+header("Location: home.php?error_signup=true");
 ?>
