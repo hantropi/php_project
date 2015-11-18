@@ -16,7 +16,7 @@ if (!empty($_POST["login_su"]) AND !empty($_POST["password_su"]) AND !empty($_PO
     if (!$query -> fetch()) { //Si le nom ou l'email n'est pas deja utilise
 	add_member($login, $password, $email, $db); //On rajoute cet utilisateur
 	$_SESSION["id"] = get_user_id($login, $db);
-	header("Location: user.php?news=true");
+	header("Location: user.php");
 	exit;
     }
 }

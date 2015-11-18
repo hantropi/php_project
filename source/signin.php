@@ -14,7 +14,7 @@ if (!empty($_POST["login_si"]) AND !empty($_POST["password_si"])) {
     
     if ($query -> fetch()) {
 	$_SESSION["id"] = get_user_id($login, $db); //On creer une variable de session pour ce souvenir de l'utilisateur dans l'instance en cours
-	header("Location: user.php?news=true");
+	header("Location: user.php");
 	exit;
     }
 }

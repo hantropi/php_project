@@ -7,7 +7,7 @@ if (isset($_POST["title"]) and isset($_POST["content"])) {
 	$query -> execute(array("user" => $_SESSION["id"],
 	    "title" => $title,
 	    "content" => $content));
-	header("Location: user.php?news=true");
+	header("Location: user.php");
 	exit;
     }
 }
