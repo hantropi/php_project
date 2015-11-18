@@ -27,14 +27,6 @@ $db = connect();
 	require "post.php";
     }
     else if (isset($_GET["settings"]) or isset($_GET["change"]) or isset($_GET["error_change"])) { //Affichage et modifications des parametres de l'utilisateur
-	if (!empty($_GET["change"])) {
-	    require "change.html";
-	}
-	if (!empty($_POST["change_value"])) {
-	    require "change.php";
-	}
-	if (isset($_GET["error_change"]))
-	    echo "<b>Erreur : Champ et/ou valeur errone(s)</b><br>";
 	require "settings.php";
     }
     else if (isset($_GET["signout"])) { //Deconnexion de la session
