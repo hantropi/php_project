@@ -23,7 +23,7 @@ $db = connect();
     if (isset($_GET["news"])) { //Affichage des actualites de l'utilisateur
 	require "news.php";
     }
-    if (isset($_GET["friends"])) { //Recherche d'une personne et affichage de l'ensemble de ses amis
+    else if (isset($_GET["friends"])) { //Recherche d'une personne et affichage de l'ensemble de ses amis
 	require "search.html";
 	if (isset($_POST["friend_name"]))
 	    require "search.php";
@@ -31,12 +31,12 @@ $db = connect();
 	    require "add_friend.php";
 	require "friends.php";
     }
-    if (isset($_GET["post"])) { //Ecriture d'un message
+    else if (isset($_GET["post"])) { //Ecriture d'un message
 	require "post.html";
 	if (isset($_POST["title"]) and isset($_POST["content"]))
 	    require "post.php";
     }
-    if (isset($_GET["settings"]) or isset($_GET["change"]) or isset($_GET["error_change"])) { //Affichage et modifications des parametres de l'utilisateur
+    else if (isset($_GET["settings"]) or isset($_GET["change"]) or isset($_GET["error_change"])) { //Affichage et modifications des parametres de l'utilisateur
 	if (!empty($_GET["change"])) {
 	    require "change.html";
 	}
@@ -47,7 +47,7 @@ $db = connect();
 	    echo "<b>Erreur : Champ et/ou valeur errone(s)</b><br>";
 	require "settings.php";
     }
-    if (isset($_GET["signout"])) { //Deconnexion de la session
+    else if (isset($_GET["signout"])) { //Deconnexion de la session
 	unset($_SESSION["id"]);
 	header("Location: home.php");
 	exit;
