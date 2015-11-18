@@ -2,13 +2,12 @@
 $friend_name = htmlspecialchars($_POST["friend_name"]);
 $query = $db -> prepare("SELECT * FROM users WHERE login = :name OR first_name = :name OR last_name = :name");
 $query -> execute(array("name" => $friend_name));
-$data = $query -> fetch();
-$query -> closeCursor();
 
 $fields = ["Login", "Prenom", "Nom", "Age", "Pays", "Email"]; //Champs en sous forme ecrite courante
 $db_fields = ["login", "first_name", "last_name", "age", "country", "email"]; //Champs de la base de donnee
 
-if ($data) {
+if ($query -> fetch()) {
+    $query -> closeCursor();
     for ($i = 0 ; $i < 6 ; $i++) {
 	echo $fields[$i] . " : " . $data[$db_fields[$i]] . "<br>";
     }

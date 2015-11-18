@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "library.php";
+include_once "../library.php";
 
 $db = connect();
 
@@ -16,9 +16,9 @@ if (!empty($_POST["login_su"]) AND !empty($_POST["password_su"]) AND !empty($_PO
     if (!$query -> fetch()) { //Si le nom ou l'email n'est pas deja utilise
 	add_member($login, $password, $email, $db); //On rajoute cet utilisateur
 	$_SESSION["id"] = get_user_id($login, $db);
-	header("Location: user.php");
+	header("Location: ../user.php");
 	exit;
     }
 }
-header("Location: home.php?error_signup=true");
+header("Location: ../home.php?error_signup=true");
 ?>

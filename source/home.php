@@ -9,7 +9,7 @@
   <body>
     <h1>PHP Project</h1>
     
-    <form action="signup.php" method="post">
+    <form action="sign/signup.php" method="post">
       <fieldset>
 	<legend>
 	  <h2>Inscription</h2> <!-- Sign Up -->
@@ -25,7 +25,7 @@
       </fieldset>
     </form><br>
     
-    <form action="signin.php" method="post">
+    <form action="sign/signin.php" method="post">
       <fieldset>
 	<legend>
 	  <h2>Connexion</h2> <!-- Sign In -->

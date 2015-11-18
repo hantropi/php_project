@@ -1,8 +1,8 @@
 <?php //Gere la recherche et l'affichage des amis de l'utilisateur
-require "search_friend.html";
+require "friends/search_friend.html";
 if (isset($_POST["friend_name"]))
-    require "search_friend.php";
+    require "friends/search_friend.php";
 if (isset($_GET["add_friend"]))
-    require "add_friend.php";
-require "display_friends.php";
+    require "friends/add_friend.php";
+require "friends/display_friends.php";
 ?>
