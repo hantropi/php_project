@@ -21,11 +21,6 @@ $db = connect();
     </ul>
     <?php
     if (isset($_GET["friends"])) { //Recherche d'une personne et affichage de l'ensemble de ses amis
-	require "search.html";
-	if (isset($_POST["friend_name"]))
-	    require "search.php";
-	if (isset($_GET["add_friend"]))
-	    require "add_friend.php";
 	require "friends.php";
     }
     else if (isset($_GET["post"])) { //Ecriture d'un message

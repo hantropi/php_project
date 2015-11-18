@@ -1,16 +1,16 @@
-<?php //
+<?php //Recherche le login/prenom/nom de l'ami dans la base de donnee, et affiche ses infos si il existe
 $friend_name = htmlspecialchars($_POST["friend_name"]);
 $query = $db -> prepare("SELECT * FROM users WHERE login = :name OR first_name = :name OR last_name = :name");
 $query -> execute(array("name" => $friend_name));
 $data = $query -> fetch();
 $query -> closeCursor();
 
-$champs = ["Login", "Prenom", "Nom", "Age", "Pays", "Email"];
-$informations = ["login", "first_name", "last_name", "age", "country", "email"];
+$fields = ["Login", "Prenom", "Nom", "Age", "Pays", "Email"]; //Champs en sous forme ecrite courante
+$db_fields = ["login", "first_name", "last_name", "age", "country", "email"]; //Champs de la base de donnee
 
 if ($data) {
     for ($i = 0 ; $i < 6 ; $i++) {
-	echo $champs[$i] . " : " . $data[$informations[$i]] . "<br>";
+	echo $fields[$i] . " : " . $data[$db_fields[$i]] . "<br>";
     }
     
     $_SESSION["friend_id"] = $data["id"];
@@ -24,5 +24,5 @@ if ($data) {
 	echo "<a href='user.php?friends=true&add_friend=true'>Ajouter</a><br>";
 }
 else
-    echo "Votre requete ne donne aucun resultat." . "<br>";
+    echo "Votre requete ne donne aucun resultat.<br>";
 ?>
