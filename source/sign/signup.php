@@ -20,5 +20,6 @@ if (!empty($_POST["login_su"]) AND !empty($_POST["password_su"]) AND !empty($_PO
 	exit;
     }
 }
-header("Location: ../home.php?error_signup=true");
+$_SESSION["error_signup"] = true;
+header("Location: ../home.php");
 ?>

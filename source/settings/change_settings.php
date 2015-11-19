@@ -6,5 +6,6 @@ if (!check_value($change, $value, $db)) {
     header("Location: user.php?settings=true"); //On renvoie a la page des parametres une fois la modification terminee
     exit;
 }
-header("Location: user.php?settings=true&error_change=true"); //Sinon on met un message d'erreur
+$_SESSION["error_change"] = true;
+header("Location: user.php?settings=true"); //Sinon on affiche un message d'erreur
 ?>

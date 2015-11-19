@@ -23,14 +23,14 @@ $db = connect();
     if (isset($_GET["friends"])) { //Recherche d'une personne et affichage de l'ensemble de ses amis
 	require "friends.php";
     }
-    else if (isset($_GET["post"]) or isset($_GET["error_post"])) { //Ecriture d'un message
+    else if (isset($_GET["post"])) { //Ecriture d'un message
 	require "post.php";
     }
-    else if (isset($_GET["settings"]) or isset($_GET["change"]) or isset($_GET["error_change"])) { //Affichage et modifications des parametres de l'utilisateur
+    else if (isset($_GET["settings"]) or isset($_GET["change"])) { //Affichage et modifications des parametres de l'utilisateur
 	require "settings.php";
     }
     else if (isset($_GET["signout"])) { //Deconnexion de la session
-	unset($_SESSION["id"]);
+	session_destroy();
 	header("Location: home.php");
 	exit;
     }

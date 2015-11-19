@@ -18,5 +18,6 @@ if (!empty($_POST["login_si"]) AND !empty($_POST["password_si"])) {
 	exit;
     }
 }
-header("Location: ../home.php?error_signin=true");
+$_SESSION["error_signin"] = true;
+header("Location: ../home.php");
 ?>

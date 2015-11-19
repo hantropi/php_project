@@ -16,10 +16,8 @@ $query -> execute($users);
 //On affiche tous les posts obtenus
 echo "<h2>Fil d'actualite</h2>";
 while ($data = $query -> fetch()) {
-    $login = get_user_login($data["user"], $db);
-    echo "Message de <b>" . $login . "</b> :<br>"; //Afficher la date du post (si possible)
+    echo "Message de <b>" . get_user_login($data["user"], $db) . "</b> :<br>"; //Afficher la date du post (si possible)
     echo "<article><b>" . $data["title"] . "</b><br>";
-    echo nl2br($data["content"]) . "<br></article>";
-    echo "<a href='user.php?post=true&post_author=" . $login . "'>Repondre</a><br><br>";
+    echo nl2br($data["content"]) . "</article><br>";
 }
 ?>
