@@ -18,7 +18,7 @@ session_start();
 	</legend>
 	<?php
 	if (isset($_SESSION["error_signup"])) {
-	    echo "<b>Une information requise est deja utilisee ou est vide. Reessayer</b><br>";
+	    echo "<b>Une information requise est deja utilisee ou vide. Reessayer.</b><br>";
 	    unset($_SESSION["error_signup"]);
 	}
 	?>
@@ -36,7 +36,7 @@ session_start();
 	</legend>
 	<?php
 	if (isset($_SESSION["error_signin"])) {
-	    echo "<b>Desole, le login et/ou le pmot de passe est incorrecte. Reessayer</b><br>";
+	    echo "<b>Le login et/ou le mot de passe est incorrecte. Reessayer.</b><br>";
 	    unset($_SESSION["error_signin"]);
 	}
 	?>

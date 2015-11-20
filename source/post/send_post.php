@@ -12,5 +12,5 @@ if (isset($_POST["title"]) and isset($_POST["content"])) {
     }
 }
 $_SESSION["error_post"] = true;
-header("Location: user.php?post=true");
+header("Location: post.php");
 ?>

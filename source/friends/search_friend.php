@@ -20,8 +20,8 @@ if ($data) {
     $user_friend = $query -> fetch();
     $query -> closeCursor();
     
-    if ($_SESSION["friend_id"] != $_SESSION["id"] and !$user_friend) //Pour eviter de s'ajouter soi meme en ami ou un utilisateur qu'on a deja en ami
-	echo "<a href='user.php?friends=true&add_friend=true'>Ajouter</a><br>";
+    if ($_SESSION["friend_id"] != $_SESSION["id"] and !$user_friend) //Pour eviter de s'ajouter soi meme ou un utilisateur qu'on a deja en ami
+	echo "<a href='friends.php?add_friend=true'>Ajouter</a><br>";
 }
 else
     echo "Votre requete ne donne aucun resultat.<br>";
