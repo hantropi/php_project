@@ -1,4 +1,4 @@
-<?php
+<?php //Fonctions PHP du site
 function connect() {
     /* Fonction permettant de ce connecter a la base de donnee du site */
     try {
@@ -32,6 +32,33 @@ function get_user_login($id, $db) {
     $query -> execute(array($id));
     $data = $query -> fetch();
     return $data["login"];
+}
+
+function find_field($field_to_change) {
+    /* Retourne une autre forme d'ecriture plus lisible du champ demande */
+    if ($field_to_change == "login") {
+	return "Login";
+    }
+    else if ($field_to_change == "password") {
+	return "Mot de passe";
+    }
+    else if ($field_to_change == "first_name") {
+	return "Prenom";
+    }
+    else if ($field_to_change == "last_name") {
+	return "Nom";
+    }
+    else if ($field_to_change == "age") {
+	return "Age";
+    }
+    else if ($field_to_change == "country") {
+	return "Pays";
+    }
+    else if ($field_to_change == "email") {
+	return "Email";
+    }
+    else //Quitter la recheche
+	header("Location: user.php?settings=true");
 }
 
 function check_value($change, $value, $db) {
