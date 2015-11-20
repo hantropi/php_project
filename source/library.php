@@ -61,6 +61,13 @@ function find_field($field_to_change) {
 	header("Location: user.php?settings=true");
 }
 
+function search_users_name($first_name, $last_name, $db) {
+    $query = $db -> prepare("SELECT id FROM users WHERE first_name = :first_name AND last_name = :last_name");
+    $query -> execute(array("first_name" => $first_name,
+	"last_name" => $last_name));
+    return $query -> fetch();
+}
+
 function check_value($change, $value, $db) {
     /* Verifie que l'entree est conforme */
     if ($change == "login") {
@@ -69,14 +76,16 @@ function check_value($change, $value, $db) {
 	return $query -> fetch();
     }
     else if ($change == "last_name") {
-	$query = $db -> prepare("SELECT id FROM users WHERE last_name = ?");
-	$query -> execute(array($value));
-	return $query -> fetch();
+	$query = $db -> prepare("SELECT first_name FROM users WHERE id = ?");
+	$query -> execute(array($_SESSION["id"]));
+	$data = $query -> fetch();
+	return search_users_name($data["first_name"], $value, $db);
     }
     else if ($change == "first_name") {
-	$query = $db -> prepare("SELECT id FROM users WHERE first_name = ?");
-	$query -> execute(array($value));
-	return $query -> fetch();
+	$query = $db -> prepare("SELECT last_name FROM users WHERE id = ?");
+	$query -> execute(array($_SESSION["id"]));
+	$data = $query -> fetch();
+	return search_users_name($value, $data["last_name"], $db);
     }
     else if ($change == "email") {
 	$query = $db -> prepare("SELECT id FROM users WHERE email = ?");
