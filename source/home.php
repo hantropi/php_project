@@ -10,7 +10,6 @@ session_start();
   </head>
   <body>
     <h1>PHP Project</h1>
-    
     <form action="sign/signup.php" method="post">
       <fieldset id='inscription'>
 	<legend>
@@ -22,15 +21,16 @@ session_start();
 	    unset($_SESSION["error_signup"]);
 	}
 	?>
-	<label for="login_su">Login :</label> <input type="text" id="login_su" name="login_su"/><br>
-	<label for="password_su">Mot de passe :</label> <input type="password" id="password_su" name="password_su"/><br>
-	<label for="age">Âge :</label>
+	
+	<label for="login_su" id="label">Login :</label> <input type="text" id="login_su" name="login_su"/><br>
+	<label for="password_su" id="label">Mot de passe :</label> <input type="password" id="password_su" name="password_su"/><br>
+	<label for="age" id="label">Âge :</label>
 	<select id="age"><?php 
 	for($i = 18; $i <= 100; $i++){ 
 		echo '<option>'.$i.'</option>';
 	}
 	?></select></br>
-	<label for="email_su">Email :</label> <input type="text" id="email_su" name="email_su"/><br>
+	<label for="email_su" id="label">Email :</label> <input type="text" id="email_su" name="email_su"/><br>
 	<input type="submit" value="Sign up"/>
       </fieldset>
     </form><br>
@@ -46,8 +46,8 @@ session_start();
 	    unset($_SESSION["error_signin"]);
 	}
 	?>
-	<label for="login_si">Login :</label> <input type="text" id="login_si" name="login_si"/><br>
-	<label for="password_si">Mot de passe :</label> <input type="password" id="password_si" name="password_si"/><br>
+	<label for="login_si" id="label">Login :</label> <input type="text" id="login_si" name="login_si"/><br>
+	<label for="password_si" id="label">Mot de passe :</label> <input type="password" id="password_si" name="password_si"/><br>
 	<input type="submit" value="Sign in"/>
       </fieldset>
     </form>
