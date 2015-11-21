@@ -12,7 +12,7 @@ session_start();
     <h1>PHP Project</h1>
     
     <form action="sign/signup.php" method="post">
-      <fieldset>
+      <fieldset id='inscription'>
 	<legend>
 	  <h2>Inscription</h2> <!-- Sign Up -->
 	</legend>
@@ -24,13 +24,19 @@ session_start();
 	?>
 	<label for="login_su">Login :</label> <input type="text" id="login_su" name="login_su"/><br>
 	<label for="password_su">Mot de passe :</label> <input type="password" id="password_su" name="password_su"/><br>
+	<label for="age">Âge :</label>
+	<select id="age"><?php 
+	for($i = 18; $i <= 100; $i++){ 
+		echo '<option>'.$i.'</option>';
+	}
+	?></select></br>
 	<label for="email_su">Email :</label> <input type="text" id="email_su" name="email_su"/><br>
 	<input type="submit" value="Sign up"/>
       </fieldset>
     </form><br>
     
     <form action="sign/signin.php" method="post">
-      <fieldset>
+      <fieldset id='connexion'>
 	<legend>
 	  <h2>Connexion</h2> <!-- Sign In -->
 	</legend>

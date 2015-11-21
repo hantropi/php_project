@@ -6,6 +6,28 @@
 body, h1, h2 {
     font-family: Lato;
 }
+h1 {
+	text-align : center;
+	border : 2px solid white;
+	margin-left : 35%;
+	margin-right : 35%;
+}
+h2{
+	color : #008000;
+}
+body{
+	background-color : #6699cc;
+}
+label{
+	display : block;
+	width : 150px;
+	float : left;
+}
+#inscription, #connexion{
+	margin-left: 35%;
+	margin-right: 35%;
+	border-color : white;
+}
 
 article {
     font-family: Helvetica, Arial;

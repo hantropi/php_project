@@ -10,11 +10,11 @@ function connect() {
     }
 }
 
-function add_member($login, $password, $email, $db) {
+function add_member($login, $password, $age, $email, $db) {
     /* Fonction qui ajoute un utilisateur a la base de donnee */
-    $query = $db -> prepare("INSERT INTO users(login, password, email) VALUES(:login, :password, :email)");
+    $query = $db -> prepare("INSERT INTO users(login, password, age, email) VALUES(:login, :password, :age, :email)");
     $query -> execute(array("login" => $login,
-	"password" => $password,
+	"password" => $password, "age" => $age,
 	"email" => $email));
 }
 
