@@ -1,4 +1,4 @@
-@font-face {
+@font-face { /* Differentes declaration de fonts a utiliser */
     font-family: Lato;
     src: url(../fonts/lato-webfont.ttf);
 }
@@ -9,14 +9,14 @@
 }
 
 body, h1, h2 {
-    font-family: Lato;
+    font-family: Lato; /* Font globale a tous les pages du site */
 }
 
-body {
+body { /* Corps de chaque pages */
     background: #6699CC;
 }
 
-h1 {
+h1 { /* Nom du site */
     background: white;
     text-align: center;
     border: 2px solid white;
@@ -26,39 +26,25 @@ h1 {
     font-family: Jaapokki;
 }
 
-h2 {
+h2 { /* Nom de chaque section du site */
     color: black;
     padding: 5px;
     text-align: center;
     font-family: Jaapokki;
 }
 
-form#home {
-    margin-left: 5%;
-    margin-right: 5%;
-    border-color : white;
-}
-
-label#home {
-    display: block;
-    width: 150px;
-    float: left;
-}
-
-section {
+section { /* Lien et mise en fome avec les contenus d'une page */
     background: white;
-    margin-left: 35%;
-    margin-right: 35%;
     border-radius: 10px;
 }
 
-header, article {
+header, article { /* Entete + corps du message */
     border-radius: 10px;
     margin-left: 10px;
     font-family: Helvetica, Arial;
 }
 
-header {
+header { /* Entete de chaque messages */
     background: #000000;
     color: #FFFFFF;
     padding: 5px;
@@ -66,7 +52,7 @@ header {
     text-align: center;
 }
 
-article {
+article { /* Corps ou contenu du message */
     background: #F6F7BD;
     width: 10%;
     padding: 10px;
@@ -74,12 +60,12 @@ article {
     margin-top: 2px;
 }
 
-footer {
+footer { /* Date de poste du message */
     margin-top: 5px;
     font-size: xx-small;
 }
 
-table, th, td {
+table, th, td { /* Tableaux */
     width: 50%;
     border: 1px solid black;
     border-collapse: collapse;
@@ -98,6 +84,6 @@ td#settings {
     width: 20%;
 }
 
-#error {
+#error { /* Message d'erreurs */
     color: red;
 }

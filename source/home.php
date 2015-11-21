@@ -7,12 +7,13 @@ session_start();
     <title>Home</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="global.css">
+    <link rel="stylesheet" type="text/css" href="home.css">
   </head>
   <body>
     <h1>PHP Project</h1>
     <section>
       <form action="sign/signup.php" method="post" id="home">
-	<h2>Inscription</h2> <!-- Sign Up -->
+	<h2>Inscription</h2>
 	<?php
 	if (isset($_SESSION["error_signup"])) {
 	    echo "<b>Une information requise est deja utilisee ou vide. Reessayer.</b><br><br>";
@@ -26,7 +27,7 @@ session_start();
       </form>
       
       <form action="sign/signin.php" method="post" id="home">
-	<h2>Connexion</h2> <!-- Sign In -->
+	<h2>Connexion</h2>
 	<?php
 	if (isset($_SESSION["error_signin"])) {
 	    echo "<b>Le login et/ou le mot de passe est incorrecte. Reessayer.</b><br><br>";
