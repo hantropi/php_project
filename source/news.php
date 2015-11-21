@@ -10,14 +10,17 @@ $query -> closeCursor();
 
 //On execute une requete pour obtenir chaques messages et lien entre utilisateurs
 $users_string = implode(",", $users);
-$query = $db -> prepare("SELECT user, title, content FROM posts WHERE user IN ($users_string) ORDER BY id DESC LIMIT 0, 50"); //Rajouter une limite de nombre et de temps
+$query = $db -> prepare("SELECT * FROM posts WHERE user IN ($users_string) ORDER BY id DESC LIMIT 0, 50"); //Rajouter une limite de nombre et de temps
 $query -> execute($users);
 
 //On affiche tous les posts obtenus
+echo "<section>";
 echo "<h2>Fil d'actualite</h2>";
 while ($data = $query -> fetch()) {
-    echo "Message de <b>" . get_user_login($data["user"], $db) . "</b> :<br>"; //Afficher la date du post (si possible)
+    echo "<header>Message de <b>" . get_user_login($data["user"], $db) . "</b> :<br></header>"; //Afficher la date du post (si possible)
     echo "<article><b>" . $data["title"] . "</b><br>";
-    echo nl2br($data["content"]) . "</article><br>";
+    echo nl2br($data["content"]) . "<br>";
+    echo "<footer>Posted</footer></article><br>"; //$data["date_time"]
 }
+echo "</section>";
 ?>

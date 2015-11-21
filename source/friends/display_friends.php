@@ -14,7 +14,6 @@ if ($users) {
     $query -> execute($users);
 }
 
-echo "<h2>Amis</h2>";
 echo "<table border='1'>"; //On creer un tableau pour ordonner le rangement des amis
 echo "<tr>";
 echo "<th>Login</th>";

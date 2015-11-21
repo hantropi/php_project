@@ -14,8 +14,9 @@ $db = connect();
   <body>
     <?php //Affiche les parametres de l'utilisateur et permet de les changer
     require "menu.html";
+    echo "<section>";
     if (isset($_SESSION["error_change"])) {
-	echo "<b>Erreur : Champ et/ou valeur errone(s)</b><br>";
+	echo "<b id='error'>Erreur : Champ et/ou valeur errone(s)</b><br>";
 	unset($_SESSION["error_change"]);
     }
     if (!empty($_GET["change"])) {
@@ -25,6 +26,7 @@ $db = connect();
 	require "settings/change_settings.php";
     }
     require "settings/display_settings.php";
+    echo "</section>";
     ?>
   </body>
 </html>

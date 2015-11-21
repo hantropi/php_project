@@ -3,18 +3,90 @@
     src: url(../fonts/lato-webfont.ttf);
 }
 
+@font-face {
+    font-family: Jaapokki;
+    src: url(../fonts/jaapokki-webfont.otf);
+}
+
 body, h1, h2 {
     font-family: Lato;
 }
 
-article {
+body {
+    background: #6699CC;
+}
+
+h1 {
+    background: white;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin-left: 35%;
+    margin-right: 35%;
+    font-family: Jaapokki;
+}
+
+h2 {
+    color: black;
+    padding: 5px;
+    text-align: center;
+    font-family: Jaapokki;
+}
+
+form#home {
+    margin-left: 5%;
+    margin-right: 5%;
+    border-color : white;
+}
+
+label#home {
+    display: block;
+    width: 150px;
+    float: left;
+}
+
+section {
+    background: white;
+    margin-left: 35%;
+    margin-right: 35%;
+    border-radius: 10px;
+}
+
+header, article {
+    border-radius: 10px;
+    margin-left: 10px;
     font-family: Helvetica, Arial;
+}
+
+header {
+    background: #000000;
+    color: #FFFFFF;
+    padding: 5px;
+    display: table;
+    text-align: center;
+}
+
+article {
+    background: #F6F7BD;
+    width: 10%;
+    padding: 10px;
+    text-align: left;
+    margin-top: 2px;
+}
+
+footer {
+    margin-top: 5px;
+    font-size: xx-small;
 }
 
 table, th, td {
     width: 50%;
     border: 1px solid black;
     border-collapse: collapse;
+}
+
+table {
+    margin-left: 5px; /* Regarder css table */
 }
 
 th, td, td#settings {
@@ -24,4 +96,8 @@ th, td, td#settings {
 
 td#settings {
     width: 20%;
+}
+
+#error {
+    color: red;
 }
