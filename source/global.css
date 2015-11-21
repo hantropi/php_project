@@ -1,4 +1,5 @@
-@font-face { /* Differentes declaration de fonts a utiliser */
+/* Differentes declaration de fonts a utiliser */
+@font-face {
     font-family: Lato;
     src: url(../fonts/lato-webfont.ttf);
 }
@@ -19,7 +20,6 @@ body { /* Corps de chaque pages */
 h1 { /* Nom du site */
     background: white;
     text-align: center;
-    border: 2px solid white;
     border-radius: 10px;
     margin-left: 35%;
     margin-right: 35%;
@@ -33,39 +33,31 @@ h2 { /* Nom de chaque section du site */
     font-family: Jaapokki;
 }
 
+#error { /* Message d'erreurs */
+    color: red;
+}
+
 section { /* Lien et mise en fome avec les contenus d'une page */
     background: white;
     border-radius: 10px;
 }
 
-header, article { /* Entete + corps du message */
-    border-radius: 10px;
-    margin-left: 10px;
-    font-family: Helvetica, Arial;
-}
-
-header { /* Entete de chaque messages */
-    background: #000000;
-    color: #FFFFFF;
-    padding: 5px;
-    display: table;
+/* menu.html */
+nav {
     text-align: center;
+    margin-top: 20px;
 }
 
-article { /* Corps ou contenu du message */
-    background: #F6F7BD;
-    width: 10%;
-    padding: 10px;
-    text-align: left;
-    margin-top: 2px;
+a#menu {
+    background: white;
+    border-radius: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    font-family: Jaapokki;
 }
 
-footer { /* Date de poste du message */
-    margin-top: 5px;
-    font-size: xx-small;
-}
-
-table, th, td { /* Tableaux */
+/* Page avec des tableaux (friends.php + settings.php) */
+table, th, td {
     width: 50%;
     border: 1px solid black;
     border-collapse: collapse;
@@ -82,8 +74,4 @@ th, td, td#settings {
 
 td#settings {
     width: 20%;
-}
-
-#error { /* Message d'erreurs */
-    color: red;
 }

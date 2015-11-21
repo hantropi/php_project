@@ -1,6 +1,7 @@
 section {
     margin-left: 35%;
     margin-right: 35%;
+    padding: 10px;
 }
 
 form#home { /* Formulaire de home.php (signin et signup) */
@@ -13,4 +14,9 @@ label#home { /* Entrees du formulaire */
     display: block;
     width: 150px;
     float: left;
+}
+
+p {
+    font-size: small;
+    font-weight: bold;
 }

@@ -1,0 +1,31 @@
+section {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+header, article { /* Entete + corps du message */
+    border-radius: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-family: Helvetica, Arial;
+}
+
+header { /* Entete de chaque messages */
+    background: #000000;
+    color: #FFFFFF;
+    padding: 5px;
+    display: table;
+    text-align: center;
+}
+
+article { /* Corps ou contenu du message */
+    background: #F6F7BD;
+    padding: 10px;
+    text-align: left;
+    margin-top: 2px;
+}
+
+footer { /* Date de poste du message */
+    margin-top: 5px;
+    font-size: xx-small;
+}
