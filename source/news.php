@@ -20,7 +20,7 @@ while ($data = $query -> fetch()) {
     echo "<header>Message de <b>" . get_user_login($data["user"], $db) . "</b> :<br></header>"; //Afficher la date du post (si possible)
     echo "<article><b>" . $data["title"] . "</b><br>";
     echo nl2br($data["content"]) . "<br>";
-    echo "<footer>" . $data["date_post"] . "</footer></article><br>";
+    echo "<footer>Posted on " . $data["date_post"] . "</footer></article><br>";
 }
 echo "</section>";
 ?>
