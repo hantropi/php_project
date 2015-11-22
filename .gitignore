@@ -1,2 +1,5 @@
 # Ajouter les noms des fichiers ignorer par git lors d'un commit
 php_project.sql
+rapport.aux
+rapport.log
+rapport.tex
