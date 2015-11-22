@@ -3,5 +3,6 @@ $field_to_change = htmlspecialchars($_GET["change"]);
 $field = find_field($field_to_change);
 ?>
 <form action="settings.php?change=<?php echo $field_to_change; ?>" method="post">
-  <label for="entry"><?php echo $field . " :"; ?></label> <input type="text" id="entry" name="change_value"/><br>
-</form>
+  <label for="entry"><?php echo $field . " :"; ?></label> <input type="text" id="entry" name="change_value"/>
+  <input type="submit" value="Changer"><br>
+</form><br>

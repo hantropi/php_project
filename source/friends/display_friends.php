@@ -14,7 +14,7 @@ if ($users) {
     $query -> execute($users);
 }
 
-echo "<table border='1'>"; //On creer un tableau pour ordonner le rangement des amis
+echo "<table>"; //On creer un tableau pour ordonner le rangement des amis
 echo "<tr>";
 echo "<th>Login</th>";
 echo "<th>Nom</th>";
@@ -33,5 +33,5 @@ while ($data = $query -> fetch()) {
     echo "<td>" . $data["email"] . "</td>";
     echo "</tr>";
 }
-echo "</table>";
+echo "</table><br>";
 ?>

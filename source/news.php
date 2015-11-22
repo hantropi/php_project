@@ -14,7 +14,7 @@ $query = $db -> prepare("SELECT * FROM posts WHERE user IN ($users_string) ORDER
 $query -> execute($users);
 
 //On affiche tous les posts obtenus
-echo "<section id='news'>";
+echo "<section>";
 echo "<h2>Fil d'actualite</h2>";
 while ($data = $query -> fetch()) {
     echo "<header>Message de <b>" . get_user_login($data["user"], $db) . "</b> :<br></header>"; //Afficher la date du post (si possible)

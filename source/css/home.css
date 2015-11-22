@@ -4,19 +4,19 @@ section {
     padding: 10px;
 }
 
-form#home { /* Formulaire de home.php (signin et signup) */
+form { /* Formulaire de home.php (signin et signup) */
     margin-left: 5%;
     margin-right: 5%;
     border-color : white;
+    text-align: left;
 }
 
-label#home { /* Entrees du formulaire */
+label { /* Entrees du formulaire */
     display: block;
     width: 150px;
     float: left;
 }
 
-p {
+p#error {
     font-size: small;
-    font-weight: bold;
 }

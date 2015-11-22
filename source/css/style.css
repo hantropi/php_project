@@ -1,15 +1,20 @@
 /* Differentes declaration de fonts a utiliser */
 @font-face {
     font-family: Lato;
-    src: url(../fonts/lato-webfont.ttf);
+    src: url(../../fonts/lato-webfont.ttf);
 }
 
 @font-face {
-    font-family: Jaapokki;
-    src: url(../fonts/jaapokki-webfont.otf);
+    font-family: Kreon;
+    src: url(../../fonts/kreon-webfont.ttf);
 }
 
-body, h1, h2 {
+@font-face {
+    font-family: Lobster;
+    src: url(../../fonts/lobster-webfont.otf);
+}
+
+body, h2 {
     font-family: Lato; /* Font globale a tous les pages du site */
 }
 
@@ -21,25 +26,55 @@ h1 { /* Nom du site */
     background: white;
     text-align: center;
     border-radius: 10px;
+    padding: 5px;
     margin-left: 35%;
     margin-right: 35%;
-    font-family: Jaapokki;
+    font-family: Lobster;
 }
 
 h2 { /* Nom de chaque section du site */
     color: black;
-    padding: 5px;
+    padding: 10px;
     text-align: center;
-    font-family: Jaapokki;
+    font-family: Kreon;
 }
 
-#error { /* Message d'erreurs */
+p#error { /* Message d'erreurs */
     color: red;
+    padding: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+form {
+    padding: 5px;
+    text-align: center;
+}
+
+a {
+    color: #6699CC;
+}
+
+a:visited {
+    color: #3C6389;
+}
+
+div#search_friend {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+textarea {
+    width: 450px;
+    height: 150px;
+    resize: none;
 }
 
 section { /* Lien et mise en fome avec les contenus d'une page */
     background: white;
     border-radius: 10px;
+    margin-left: 25%;
+    margin-right: 25%;
 }
 
 /* menu.html */
@@ -53,7 +88,7 @@ a#menu {
     border-radius: 10px;
     margin-right: 10px;
     padding: 5px;
-    font-family: Jaapokki;
+    font-family: Kreon;
 }
 
 /* Page avec des tableaux (friends.php + settings.php) */
@@ -64,7 +99,9 @@ table, th, td {
 }
 
 table {
-    margin-left: 5px; /* Regarder css table */
+    margin-left: 5px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 th, td, td#settings {
@@ -72,6 +109,14 @@ th, td, td#settings {
     text-align: center;
 }
 
-td#settings {
+th, td#settings {
+    background : #ACAC84;
+}
+
+td {
+    background: #F6F7BD;
+}
+
+td#settings { /* settings.php (hyperlien "Modifier") */
     width: 20%;
 }

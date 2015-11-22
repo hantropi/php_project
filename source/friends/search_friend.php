@@ -9,6 +9,7 @@ $fields = ["Login", "Prenom", "Nom", "Age", "Pays", "Email"]; //Champs en sous f
 $db_fields = ["login", "first_name", "last_name", "age", "country", "email"]; //Champs de la base de donnee
 
 if ($data) {
+    echo "<div id='search_friend'>";
     for ($i = 0 ; $i < 6 ; $i++) {
 	echo $fields[$i] . " : " . $data[$db_fields[$i]] . "<br>";
     }
@@ -21,8 +22,9 @@ if ($data) {
     $query -> closeCursor();
     
     if ($_SESSION["friend_id"] != $_SESSION["id"] and !$user_friend) //Pour eviter de s'ajouter soi meme ou un utilisateur qu'on a deja en ami
-	echo "<a href='friends.php?add_friend=true'>Ajouter</a><br>";
+	echo "<br><a href='friends.php?add_friend=true'>Ajouter</a><br>";
+    echo "</div>";
 }
 else
-    echo "Votre requete ne donne aucun resultat.<br>";
+    echo "<p id='error'>Votre requete ne donne aucun resultat.</p>";
 ?>

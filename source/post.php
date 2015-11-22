@@ -9,14 +9,15 @@ $db = connect();
   <head>
     <title><?php echo get_user_login($_SESSION["id"], $db); ?> - Post Hub</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="global.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
     <?php //Permet d'envoyer un message aux autres utilisateurs
     require "menu.html";
     echo "<section>";
+    echo "<h2>Message</h2>";
     if (isset($_SESSION["error_post"])) {
-	echo "<b id='error'>Titre et/ou contenu du message vide ou probleme lors de l'envoie.</b><br>";
+	echo "<p id='error'>Titre et/ou contenu du message vide ou probleme lors de l'envoie.</p>";
 	unset($_SESSION["error_post"]);
     }
     require "post/send_post.html";

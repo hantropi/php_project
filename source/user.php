@@ -9,8 +9,8 @@ $db = connect();
   <head>
     <title><?php echo get_user_login($_SESSION["id"], $db); ?> - User Hub</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="global.css">
-    <link rel="stylesheet" type="text/css" href="news.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/news.css">
   </head>
   <body>
     <?php

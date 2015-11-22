@@ -9,7 +9,7 @@ $db = connect();
   <head>
     <title><?php echo get_user_login($_SESSION["id"], $db); ?> - Friends Hub</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="global.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
     <?php //Gere la recherche et l'affichage des amis de l'utilisateur
@@ -21,6 +21,7 @@ $db = connect();
 	require "friends/search_friend.php";
     if (isset($_GET["add_friend"]))
 	require "friends/add_friend.php";
+    echo "<br>";
     require "friends/display_friends.php";
     echo "</section>";
     ?>
